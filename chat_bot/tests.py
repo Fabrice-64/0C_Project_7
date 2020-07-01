@@ -15,8 +15,10 @@ class Test(unittest.TestCase):
     def test_search_parsing(self):
         self.question1 = "Bonjour, parle-moi de la Cité Paradis, à Paris?"
         self.question2 = "Bonjour, qu'il y a-t-il Rue de Rivoli, à Paris?"
-        self.assertEqual(self.question1.enter_search,
+        self.assertEqual(self.question1.search_parsing,
                          {'street': 'Cité Paradis', 'city': 'Paris'})
+        self.assertEqual(self.question1.search_parsing,
+                         {'street': 'Rue de Rivoli', 'city': 'Paris'})
 
 
 if __name__ == '__main__':

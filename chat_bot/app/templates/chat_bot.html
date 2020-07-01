@@ -1,9 +1,13 @@
-<html>
-    <head>
-        <title>{{ title }}  - Project_7</title>
-    </head>
-    <body>
-        <h1> Bienvenue sur Papy Bot !</h1>
-    </body>
-    <footer>{{ identity}} - {{ github }}</footer>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Mon enfant, on va entrer ta recherche</h3>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+       {{ form.address_search.label }} <br>
+       {{ form.address_search(size=64)}}
+    </p>
+    <hr>
+</form>
+{% endblock %}
