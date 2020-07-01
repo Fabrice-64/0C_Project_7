@@ -1,6 +1,6 @@
 from app import app
 
 @app.route('/')
-@app.route('/index')
-def index():
+@app.route('/Chat Bot')
+def chat_bot():
     return "Hello World!"
