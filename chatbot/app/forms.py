@@ -3,5 +3,5 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class Question(FlaskForm):
+class QuestionForm(FlaskForm):
     question = StringField('Question', validators=[DataRequired()])

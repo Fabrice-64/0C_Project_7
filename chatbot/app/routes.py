@@ -1,10 +1,10 @@
-from flask import render_template
+from flask import render_template, flash, request
 from app import app
-from app.forms import Question
+from app.forms import QuestionForm
 
 
 @app.route('/')
-@app.route('/interface')
+@app.route('/interface', methods=['GET', 'POST'])
 def interface():
-    question = Question()
+    question = QuestionForm()
     return render_template('interface.html', title='Home', question=question)
