@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Dialog boxes location</h2>
-
+<h3>C'est ici que l'on pose la question</h3>
+<form action="" method="POST" novalidate>
+    {{ question.hidden_tag() }}
+    <p>
+    {{ question.question(size=280) }}
+    </p>
+</form>
 {% endblock %}
