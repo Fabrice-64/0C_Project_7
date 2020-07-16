@@ -2,7 +2,7 @@
 
 {% block content %}
 <h3>C'est ici que l'on pose la question</h3>
-<form action="" method="POST" novalidate>
+<form action="/interface" method="POST">
     {{ question.hidden_tag() }}
     <p>
     {{ question.question(size=140) }}
