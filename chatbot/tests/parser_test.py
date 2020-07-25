@@ -1,16 +1,31 @@
+import re
 from nltk.tag import StanfordPOSTagger
-from nltk import word_tokenize
+from nltk import word_tokenize, wordpunct_tokenize
+from app.controller.config import Path
+
+
 from pytest import mark
-from tests.conftest import Path, TestParameters
+from tests.conftest import TestParameters
+from app.controller.question_parser import QuestionParser
+
+jar = Path.PATH_TO_JAR
+model = Path.PATH_TO_MODEL
 
 
-def tag_words(model, jar, original_question):
-    pos_tagger = StanfordPOSTagger(model, jar, encoding="utf-8")
-    tagged_words = pos_tagger.tag(word_tokenize(original_question))
-    return tagged_words
+class TestQuestion:
 
 
-@mark.parametrize("test_input, expected", TestParameters.questions)
-def test_question_parser(test_input, expected):
-    assert tag_words(Path.PATH_TO_MODEL, Path.PATH_TO_JAR, test_input
-                     ) == expected
+    @mark.parametrize("test_input, expected", TestParameters.questions_tokenize)
+    def test_remove_stop_words(self, test_input, expected):
+        assert QuestionParser.remove_stop_words(self, test_input) == expected
+
+
+    @mark.parametrize("test_input, expected", TestParameters.tag_tokens)
+    def test_tag_words(self, test_input, expected):
+        assert QuestionParser.tag_words(self, jar, model, test_input) == expected
+
+
+    @mark.parametrize("test_input, expected", TestParameters.filtered_words)
+    def test_discard_words(self, test_input, expected):
+        assert QuestionParser.discard_words(self, test_input) == expected
+
