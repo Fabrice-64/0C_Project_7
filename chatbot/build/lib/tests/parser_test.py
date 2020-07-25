@@ -38,7 +38,4 @@ class TestQuestion:
 
     @mark.parametrize("test_input, expected", TestParameters.parsing_process)
     def test_parsing_process(self, test_input, expected):
-        result = QuestionParser.remove_stop_words(self, test_input)
-        result = QuestionParser.tag_words(self, jar, model, result)
-        result = QuestionParser.discard_words(self, result)
-        assert result == expected
+        assert parsing_process(self, test_input) == expected
