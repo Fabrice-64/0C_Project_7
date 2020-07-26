@@ -11,7 +11,11 @@ def configure_keywords(keywords):
 
 
 def set_request(keywords):
-    return set_request.format(keywords)
+    return config.WIKI_ROOT.format(keywords)
+
+
+def get_summary():
+    pass
 
 
 @mark.parametrize("test_input, expected", TestConfigureKeyWords.strings_to_test)
@@ -19,6 +23,10 @@ def test_configure_keywords(test_input, expected):
     assert configure_keywords(test_input) == expected
 
 
-def test_connection_ok():
-    r = requests.get(config.WIKI_ROOT)
+@mark.parametrize("test_input, expected", TestConfigureKeyWords.strings_to_test)
+def test_connection_ok(test_input, expected):
+    keywords = configure_keywords(test_input)
+    get_summary = set_request(keywords)
+    r = requests.get(get_summary)
+    assert keywords == expected
     assert r.status_code == 200
