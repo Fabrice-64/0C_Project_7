@@ -11,13 +11,8 @@ from app.controller.question_parser import QuestionParser
 jar = Path.PATH_TO_JAR
 model = Path.PATH_TO_MODEL
 
-"""
-@pytest.fixture(name="Question_parser.parsing_process")
-def full_parsing_process():
-    return QuestionParser.parsing_process()
-"""
 
-class TestQuestion:
+class TestQuestion():
 
 
     @mark.parametrize("test_input, expected", TestParameters.questions_tokenize)
@@ -36,21 +31,8 @@ class TestQuestion:
 
 
     @mark.parametrize("test_input, expected", TestParameters.parsing_process)
-    def test_parsing_process(self, test_input, expected):
-        result = QuestionParser.remove_stop_words(self, test_input)
-        result = QuestionParser.tag_words(self, jar, model, result)
-        result = QuestionParser.discard_words(self, result)
-        assert result == expected
-
-
-    @mark.parametrize("test_input, expected", TestParameters.parsing_process)
     def test_full_parsing_process(self, test_input, expected):
-        result = QuestionParser.parsing_process(self, test_input)
+        test = QuestionParser()
+        result = test.parsing_process(test_input)
         assert result == expected
 
-
-    """
-    @mark.parametrize("test_input, expected", TestParameters.parsing_process)
-    def test_full_parsing_process(self, parsing_process, test_input, expected):
-        assert parsing_process(test_input) == expected
-    """

@@ -35,7 +35,7 @@ class QuestionParser():
         return key_words
 
     def parsing_process(self, original_question):
-        self.cleaned_sentence = self.remove_stop_words(original_question)
-        self.tagged_words = self.tag_words(jar, model, self.cleaned_sentence)
-        self.key_words = self.discard_words(self.tagged_words)
-        return self.key_words
+        cleaned_sentence = self.remove_stop_words(original_question)
+        tagged_words = self.tag_words(jar, model, cleaned_sentence)
+        key_words = self.discard_words(tagged_words)
+        return key_words

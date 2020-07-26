@@ -54,3 +54,4 @@ class TestConfigureKeyWords():
         (TestParameters.question2[3], 'Vallée%20Saints'),
         (TestParameters.question3[3], 'Musée%20Invalides')
     ]
+
