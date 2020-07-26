@@ -11,10 +11,11 @@ from app.controller.question_parser import QuestionParser
 jar = Path.PATH_TO_JAR
 model = Path.PATH_TO_MODEL
 
+"""
 @pytest.fixture(name="Question_parser.parsing_process")
 def full_parsing_process():
     return QuestionParser.parsing_process()
-
+"""
 
 class TestQuestion:
 
@@ -41,7 +42,15 @@ class TestQuestion:
         result = QuestionParser.discard_words(self, result)
         assert result == expected
 
-   
+
+    @mark.parametrize("test_input, expected", TestParameters.parsing_process)
+    def test_full_parsing_process(self, test_input, expected):
+        result = QuestionParser.parsing_process(self, test_input)
+        assert result == expected
+
+
+    """
     @mark.parametrize("test_input, expected", TestParameters.parsing_process)
     def test_full_parsing_process(self, parsing_process, test_input, expected):
         assert parsing_process(test_input) == expected
+    """

@@ -10,6 +10,7 @@ model = Path.PATH_TO_MODEL
 
 
 class QuestionParser():
+
     def remove_stop_words(self, original_question):
         tokens = wordpunct_tokenize(original_question)
         cleaned_sentence =\
