@@ -11,4 +11,4 @@ class Path():
 
 
 
-WIKI_ROOT = 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles={}'
+WIKI_ROOT = 'https://fr.wikipedia.org/w/api.php'

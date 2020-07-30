@@ -5,6 +5,7 @@ from nltk import word_tokenize, wordpunct_tokenize
 from resources import stop_words
 from app.controller.config import Path
 
+
 jar = Path.PATH_TO_JAR
 model = Path.PATH_TO_MODEL
 

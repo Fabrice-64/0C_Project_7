@@ -23,28 +23,38 @@ class TestParameters():
         ('Musée Invalides')
         ]
 
+    question4 = [
+        'Bonjour, PapyBot. J\'espère que vous allez tous bien à la maison. Alors, j\'ai une question pour toi. Connais-tu le chateau de Versailles?', 'Connais chateau Versailles',
+            [('Connais', 'VERB'), ('Chateau', 'NOUN'), ('Versailles', 'PROPN'), ('?', 'PUNCT')],
+            ('Chateau Versailles')
+    ]
+
     questions_tokenize = [
         (question1[0], question1[1]),
         (question2[0], question2[1]),
-        (question3[0], question3[1])
+        (question3[0], question3[1]),
+        (question4[0], question4[1])
         ]
 
     tag_tokens = [
         (question1[1], question1[2]),
         (question2[1], question2[2]),
-        (question3[1], question3[2])
+        (question3[1], question3[2]),
+        (question4[1], question4[2])
         ]
 
     filtered_words = [
         (question1[2], question1[3]),
         (question2[2], question2[3]),
         (question3[2], question3[3]),
+        (question4[2], question4[3])
         ]
 
     parsing_process = [
         (question1[0], question1[3]),
         (question2[0], question2[3]),
-        (question3[0], question3[3])
+        (question3[0], question3[3]),
+        (question4[0], question4[3])
         ]
 
 
