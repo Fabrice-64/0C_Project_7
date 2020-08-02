@@ -1,6 +1,6 @@
 import requests
 from app.controller import config
-from app.controller.api_folder.api_wikipedia import get_draft_location, sort_out_exact_location_name, get_location_summary, filter_location_summary, get_coordinates
+from app.controller.api_folder.api_wikipedia import get_draft_location, sort_out_exact_location_name, extract_location_summary, get_location_summary, filter_location_summary, get_coordinates, filter_coordinates
 from pytest import mark
 from tests.conftest import TestConfigureKeyWords
 from nose.tools import assert_true, assert_is_not_none, assert_list_equal, assert_equal
@@ -95,6 +95,32 @@ def test_get_location_summary(mock_get):
     assert_equal(response.json(), mock_location_summary)
 
 
+def test_extract_location_summary():
+    mock_location_summary = {
+        "batchcomplete": "",
+        "warnings": {
+        "extracts": {
+            "*": "HTML may be malformed and/or unbalanced and may omit inline images. Use at your own risk. Known problems are listed at https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TextExtracts#Caveats."
+            }
+        },
+        "query": {"normalized": [{
+            "from": "Hôtel_des_Invalides",
+            "to": "Hôtel des Invalides"
+            }],
+        "pages": {
+            "75747": {
+                "pageid": 75747,
+                "ns": 0,
+                "title": "Hôtel des Invalides",
+                "extract": "<p>L’<b>hôtel des Invalides</b> est un monument parisien dont la construction fut ordonnée par Louis <abbr class=\"abbr\" title=\"14\"><span>XIV</span></abbr> par l'édit royal du <time class=\"nowrap date-lien\" datetime=\"1670-02-24\" data-sort-value=\"1670-02-24\">24 février 1670</time>, pour abriter les invalides de ses armées. Aujourd'hui, il accueille toujours des invalides, mais également la cathédrale Saint-Louis des Invalides, plusieurs musées et une nécropole militaire avec notamment le tombeau de Napoléon <abbr class=\"abbr\" title=\"premier\">I<sup>er</sup></abbr>. C'est aussi le siège de hautes autorités militaires, comme le gouverneur militaire de Paris et rassemble beaucoup d'organismes dédiés à la mémoire des anciens combattants ou le soutien aux soldats blessés.\n</p><p>Cet immense complexe architectural, conçu par Libéral Bruand et Jules Hardouin-Mansart, est un des chefs-d’œuvre les plus importants de l'architecture classique française.\n</p><p>Ce site est desservi par les stations de métro Invalides, Varenne et La Tour-Maubourg. Avant 1860, il était situé dans le <abbr class=\"abbr\" title=\"Dixième\">10<sup>e</sup></abbr> arrondissement « ancien » d'où l'enregistrement du décès des militaires dans l'« état civil reconstitué » de la capitale qu'on peut trouver dans différentes bases de données.\n</p>\n\n\n"
+                    }
+                }
+            }
+        }
+    non_filtered_description = "<p>L’<b>hôtel des Invalides</b> est un monument parisien dont la construction fut ordonnée par Louis <abbr class=\"abbr\" title=\"14\"><span>XIV</span></abbr> par l'édit royal du <time class=\"nowrap date-lien\" datetime=\"1670-02-24\" data-sort-value=\"1670-02-24\">24 février 1670</time>, pour abriter les invalides de ses armées. Aujourd'hui, il accueille toujours des invalides, mais également la cathédrale Saint-Louis des Invalides, plusieurs musées et une nécropole militaire avec notamment le tombeau de Napoléon <abbr class=\"abbr\" title=\"premier\">I<sup>er</sup></abbr>. C'est aussi le siège de hautes autorités militaires, comme le gouverneur militaire de Paris et rassemble beaucoup d'organismes dédiés à la mémoire des anciens combattants ou le soutien aux soldats blessés.\n</p><p>Cet immense complexe architectural, conçu par Libéral Bruand et Jules Hardouin-Mansart, est un des chefs-d’œuvre les plus importants de l'architecture classique française.\n</p><p>Ce site est desservi par les stations de métro Invalides, Varenne et La Tour-Maubourg. Avant 1860, il était situé dans le <abbr class=\"abbr\" title=\"Dixième\">10<sup>e</sup></abbr> arrondissement « ancien » d'où l'enregistrement du décès des militaires dans l'« état civil reconstitué » de la capitale qu'on peut trouver dans différentes bases de données.\n</p>\n\n\n"
+    response = extract_location_summary(mock_location_summary)
+    assert_equal(response, non_filtered_description)
+
 def test_filter_location_summary():
     non_filtered_description = "<p>L’<b>hôtel des Invalides</b> est un monument parisien dont la construction fut ordonnée par Louis <abbr class=\"abbr\" title=\"14\"><span>XIV</span></abbr> par l'édit royal du <time class=\"nowrap date-lien\" datetime=\"1670-02-24\" data-sort-value=\"1670-02-24\">24 février 1670</time>, pour abriter les invalides de ses armées. Aujourd'hui, il accueille toujours des invalides, mais également la cathédrale Saint-Louis des Invalides, plusieurs musées et une nécropole militaire avec notamment le tombeau de Napoléon <abbr class=\"abbr\" title=\"premier\">I<sup>er</sup></abbr>. C'est aussi le siège de hautes autorités militaires, comme le gouverneur militaire de Paris et rassemble beaucoup d'organismes dédiés à la mémoire des anciens combattants ou le soutien aux soldats blessés.\n</p><p>Cet immense complexe architectural, conçu par Libéral Bruand et Jules Hardouin-Mansart, est un des chefs-d’œuvre les plus importants de l'architecture classique française.\n</p><p>Ce site est desservi par les stations de métro Invalides, Varenne et La Tour-Maubourg. Avant 1860, il était situé dans le <abbr class=\"abbr\" title=\"Dixième\">10<sup>e</sup></abbr> arrondissement « ancien » d'où l'enregistrement du décès des militaires dans l'« état civil reconstitué » de la capitale qu'on peut trouver dans différentes bases de données.\n</p>\n\n\n"
     filtered_description = "L’hôtel des Invalides est un monument parisien dont la construction fut ordonnée par Louis XIV par l'édit royal du 24 février 1670, pour abriter les invalides de ses armées. Aujourd'hui, il accueille toujours des invalides, mais également la cathédrale Saint-Louis des Invalides, plusieurs musées et une nécropole militaire avec notamment le tombeau de Napoléon Ier. C'est aussi le siège de hautes autorités militaires, comme le gouverneur militaire de Paris et rassemble beaucoup d'organismes dédiés à la mémoire des anciens combattants ou le soutien aux soldats blessés.\nCet immense complexe architectural, conçu par Libéral Bruand et Jules Hardouin-Mansart, est un des chefs-d’œuvre les plus importants de l'architecture classique française.\nCe site est desservi par les stations de métro Invalides, Varenne et La Tour-Maubourg. Avant 1860, il était situé dans le 10e arrondissement « ancien » d'où l'enregistrement du décès des militaires dans l'« état civil reconstitué » de la capitale qu'on peut trouver dans différentes bases de données.\n\n\n\n"
@@ -117,4 +143,11 @@ def test_get_coordinates(mock_get):
 
 
 def test_filter_coordinates():
-    pass
+    non_filtered_coordinates = {
+        "batchcomplete":"",
+        "query":{"pages":
+        {"75747":{"pageid":75747,"ns":0,"title":"H\u00f4tel des Invalides",
+        "coordinates":[{"lat":48.86,"lon":2.311944,"primary":"","globe":"earth"}]}}}}
+    filtered_coordinates = {"lat":48.86,"lon":2.311944,"primary":"","globe":"earth"}
+    response = filter_coordinates(non_filtered_coordinates)
+    assert_equal(response, filtered_coordinates)
