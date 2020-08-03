@@ -1,6 +1,5 @@
 import requests
 import re
-
 from app.controller import config
 
 
@@ -15,14 +14,17 @@ def get_draft_location(location_search):
     payload['srsearch'] = location_search
     response = requests.get(config.WIKI_ROOT, params=payload)
     if response.ok:
-        return response
+        return response.json()
     else:
         return None
 
 
 def sort_out_exact_location_name(draft_location):
-    exact_location_name = draft_location['query']['search'][0]['title']
-    return exact_location_name
+    try:
+      exact_location_name = draft_location['query']['search'][0]['title']
+      return exact_location_name
+    except:
+      return None
 
 
 def get_location_summary(exact_location_name):
@@ -30,13 +32,13 @@ def get_location_summary(exact_location_name):
                                                 'format': 'json',
                                                 'action': 'query',
                                                 'titles': 'TBD',
-                                                'propr': 'extract',
+                                                'prop': 'extracts',
                                                 'exintro': '1'}
     payload = WIKI_GET_LOCATION_SUMMARY_PAYLOAD
     payload['titles'] = exact_location_name
     response = requests.get(config.WIKI_ROOT, params = payload)
     if response.ok:
-        return response
+        return response.json()
     else:
         return None
 
@@ -61,11 +63,31 @@ def get_coordinates(exact_location_name):
     payload = WIKI_GET_COORDINATES_PAYLOAD
     payload['titles'] = exact_location_name
     response = requests.get(config.WIKI_ROOT, params = payload)
+    response = response.json()
     return response
 
 
 def filter_coordinates(draft_coordinates):
-    key = list(draft_coordinates.get('query').get('pages').keys())
-    filtered_coordinates = draft_coordinates.get('query').get('pages').get(key[0]).get('coordinates')[0]
-    
-    return filtered_coordinates
+    try:
+      key = list(draft_coordinates.get('query').get('pages').keys())
+      filtered_coordinates = draft_coordinates.get('query').get('pages').get(key[0]).get('coordinates')[0]
+      return filtered_coordinates
+    except TypeError:
+      return None
+
+def from_question_to_summary(question):
+    response = get_draft_location(question)
+    response = sort_out_exact_location_name(response)
+    if response is not None:
+      response = get_location_summary(response)
+      response = extract_location_summary(response)
+      response = filter_location_summary(response)
+      return response
+    else:
+      return None
+
+
+def from_question_to_coordinates(question):
+    response = get_coordinates(question)
+    response = filter_coordinates(response)
+    return response

@@ -1,9 +1,9 @@
 import requests
 from app.controller import config
-from app.controller.api_folder.api_wikipedia import get_draft_location, sort_out_exact_location_name, extract_location_summary, get_location_summary, filter_location_summary, get_coordinates, filter_coordinates
+from app.controller.api_folder.api_wikipedia import get_draft_location, sort_out_exact_location_name, extract_location_summary, get_location_summary, filter_location_summary, get_coordinates, filter_coordinates, from_question_to_summary, from_question_to_coordinates
 from pytest import mark
 from tests.conftest import TestConfigureKeyWords
-from nose.tools import assert_true, assert_is_not_none, assert_list_equal, assert_equal
+from nose.tools import assert_true, assert_is_not_none, assert_equal
 from unittest.mock import Mock, patch
 
 
@@ -37,7 +37,7 @@ def test_get_draft_location_when_response_is_ok(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = mock_draft_location
     response = get_draft_location(location_search)
-    assert_equal(response.json(), mock_draft_location)
+    assert_equal(response, mock_draft_location)
 
 
 def test_sort_out_exact_location_name():
@@ -92,7 +92,7 @@ def test_get_location_summary(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = mock_location_summary
     response = get_location_summary(mock_location_name)
-    assert_equal(response.json(), mock_location_summary)
+    assert_equal(response, mock_location_summary)
 
 
 def test_extract_location_summary():
@@ -139,7 +139,7 @@ def test_get_coordinates(mock_get):
     mock_get.return_value = Mock(ok=True)
     mock_get.return_value.json.return_value = mock_draft_coordinates
     response = get_coordinates(mock_location_name)
-    assert_equal(response.json(), mock_draft_coordinates)
+    assert_equal(response, mock_draft_coordinates)
 
 
 def test_filter_coordinates():
@@ -151,3 +151,32 @@ def test_filter_coordinates():
     filtered_coordinates = {"lat":48.86,"lon":2.311944,"primary":"","globe":"earth"}
     response = filter_coordinates(non_filtered_coordinates)
     assert_equal(response, filtered_coordinates)
+
+
+def test_from_question_to_summary():
+    question = 'hotel invalides'
+    test_filtered_description = """L’hôtel des Invalides est un monument parisien dont la construction fut ordonnée par Louis XIV par l'édit royal du 24 février 1670, pour abriter les invalides de ses armées. Aujourd'hui, il accueille toujours des invalides, mais également la cathédrale Saint-Louis des Invalides, plusieurs musées et une nécropole militaire avec notamment le tombeau de Napoléon Ier. C'est aussi le siège de hautes autorités militaires, comme le gouverneur militaire de Paris et rassemble beaucoup d'organismes dédiés à la mémoire des anciens combattants ou le soutien aux soldats blessés.
+    Cet immense complexe architectural, conçu par Libéral Bruand et Jules Hardouin-Mansart, est un des chefs-d’œuvre les plus importants de l'architecture classique française.
+    Ce site est desservi par les stations de métro Invalides, Varenne et La Tour-Maubourg. Avant 1860, il était situé dans le 10e arrondissement « ancien » d'où l'enregistrement du décès des militaires dans l'« état civil reconstitué » de la capitale qu'on peut trouver dans différentes bases de données."""
+    summary = from_question_to_summary(question)
+    assert all(map(lambda w: w in summary, ('Invalides', '1860','classique', 'militaires', 'arrondissement', 'bases de données')))
+
+def test_from_question_to_coordinatates():
+    question = "Hôtel des Invalides"
+    test_filtered_coordinates = {"lat":48.86,"lon":2.311944,"primary":"","globe":"earth"}
+    coordinates = from_question_to_coordinates(question)
+    assert test_filtered_coordinates == coordinates
+
+
+def test_from_question_to_coordinates_not_ok():
+    question = "Napoléon Ier"
+    test_filtered_coordinates = None
+    coordinates = from_question_to_coordinates(question)
+    assert test_filtered_coordinates == coordinates
+
+
+def test_from_question_to_summary_not_ok():
+    question = "NonArticle"
+    test_filtered_summary = None
+    summary = from_question_to_summary(question)
+    assert test_filtered_summary == summary
