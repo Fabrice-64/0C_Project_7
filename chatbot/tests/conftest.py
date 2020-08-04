@@ -24,10 +24,14 @@ class TestParameters():
         ]
 
     question4 = [
-        'Bonjour, PapyBot. J\'espère que vous allez tous bien à la maison. Alors, j\'ai une question pour toi. Connais-tu le chateau de Versailles?', 'Connais chateau Versailles',
-            [('Connais', 'VERB'), ('Chateau', 'NOUN'), ('Versailles', 'PROPN'), ('?', 'PUNCT')],
-            ('Chateau Versailles')
-    ]
+        'Bonjour, PapyBot. J\'espère que vous allez tous bien à la maison. Alors, j\'ai une question pour toi. Connais-tu le chateau de Versailles?',
+        '. espère allez maison . Alors question . Connais chateau Versailles ?',
+        [('.', 'PUNCT'), ('espère', 'VERB'), ('allez', 'VERB'), ('maison', 'NOUN'), ('.', 'PUNCT'),
+        ('Alors', 'ADV'), ('question', 'NOUN'), ('.', 'PUNCT'),
+        ('Connais', 'ADJ'), ('chateau', 'NOUN'), ('Versailles', 'PROPN'), ('?', 'PUNCT')
+        ],
+        ('chateau Versailles')
+        ]
 
     questions_tokenize = [
         (question1[0], question1[1]),
@@ -62,6 +66,7 @@ class TestConfigureKeyWords():
     strings_to_test = [
         (TestParameters.question1[3], 'Champs%20Elysées%20Paris'),
         (TestParameters.question2[3], 'Vallée%20Saints'),
-        (TestParameters.question3[3], 'Musée%20Invalides')
+        (TestParameters.question3[3], 'Musée Invalides'),
+        (TestParameters.question4[3], 'chateau Versailles')
     ]
 

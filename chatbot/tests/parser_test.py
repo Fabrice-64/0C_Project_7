@@ -1,6 +1,6 @@
 import re
-from nltk.tag import StanfordPOSTagger
-from nltk import word_tokenize, wordpunct_tokenize
+#from nltk.tag import StanfordPOSTagger
+#from nltk import word_tokenize, wordpunct_tokenize
 from app.controller.config import Path
 
 
