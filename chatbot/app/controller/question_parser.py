@@ -25,14 +25,16 @@ class QuestionParser():
 
     def discard_words(self, tagged_words):
         key_words = []
-        for i in range(len(tagged_words)):
-            if 'VERB' == tagged_words[i][1]:
-                while i < len(tagged_words) - 1 \
-                    and tagged_words[i+1][1] in ['NOUN', 'PROPN'] \
-                    and re.match("[A-Z]+[a-z]{1,18}", tagged_words[i+1][0]):
-                    key_words.append(tagged_words[i+1][0])
-                    i += 1
-        key_words = " ".join(key_words)
+        question_tag = ('?', 'PUNCT')
+        if question_tag in tagged_words:
+            index = tagged_words.index(question_tag)
+            while index > 0 and tagged_words[index-1][1] not in \
+                    ['PUNCT', 'VERB', 'INTJ', 'ADV', 'DET', 'ADP', 'PRON']:
+                key_words.append(tagged_words[index-1][0])
+                index -= 1
+            key_words = " ".join(list(reversed(key_words)))
+        else:
+            key_words = 'None'
         return key_words
 
     def parsing_process(self, original_question):

@@ -2,11 +2,11 @@
 
 class TestParameters():
     question1 = [
-        'Bonjour ChatBot, pourrais-tu me parler des Champs-Elysées, à Paris ? Bisous à tout le monde',
-        'parler Champs Elysées Paris ? monde',
+        'Bonjour ChatBot, pourrais-tu me parler des Champs-Elysées? Bisous à tout le monde',
+        'parler Champs Elysées ? monde',
         [('parler', 'VERB'), ('Champs', 'PROPN'), ('Elysées', 'PROPN'),
-            ('Paris', 'PROPN'), ('?', 'PUNCT'), ('monde', 'NOUN')],
-        ('Champs Elysées Paris')
+            ('?', 'PUNCT'), ('monde', 'NOUN')],
+        ('Champs Elysées')
     ]
 
     question2 = [
@@ -24,11 +24,11 @@ class TestParameters():
         ]
 
     question4 = [
-        'Bonjour, PapyBot. J\'espère que vous allez tous bien à la maison. Alors, j\'ai une question pour toi. Connais-tu le chateau de Versailles?',
-        '. espère allez maison . Alors question . Connais chateau Versailles ?',
+        'Bonjour, PapyBot. J\'espère que vous allez tous bien à la maison. Alors, j\'ai une question pour toi.  Que connais-tu du chateau de Versailles?',
+         '. espère allez maison . Alors question . Que connais chateau Versailles ?',
         [('.', 'PUNCT'), ('espère', 'VERB'), ('allez', 'VERB'), ('maison', 'NOUN'), ('.', 'PUNCT'),
-        ('Alors', 'ADV'), ('question', 'NOUN'), ('.', 'PUNCT'),
-        ('Connais', 'ADJ'), ('chateau', 'NOUN'), ('Versailles', 'PROPN'), ('?', 'PUNCT')
+        ('Alors', 'ADV'), ('question', 'NOUN'), ('.', 'PUNCT'), ('Que', 'PRON'),
+        ('connais', 'VERB'), ('chateau', 'NOUN'), ('Versailles', 'PROPN'), ('?', 'PUNCT')
         ],
         ('chateau Versailles')
         ]
@@ -64,8 +64,8 @@ class TestParameters():
 
 class TestConfigureKeyWords():
     strings_to_test = [
-        (TestParameters.question1[3], 'Champs%20Elysées%20Paris'),
-        (TestParameters.question2[3], 'Vallée%20Saints'),
+        (TestParameters.question1[3], 'Champs Elysées Paris'),
+        (TestParameters.question2[3], 'Vallée Saints'),
         (TestParameters.question3[3], 'Musée Invalides'),
         (TestParameters.question4[3], 'chateau Versailles')
     ]
