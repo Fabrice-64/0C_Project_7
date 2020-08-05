@@ -1,12 +1,14 @@
 import requests
 from nose.tools import assert_true
 
+from config import Config
+
 GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/staticmap'
 
 GOOGLE_PAYLOAD = {
     'center': 'Hôtel des Invalides',
     'size': '400x400',
-    'key': 'AIzaSyBIRi_LZmXBjAFfI7L2VlTntLIA9hUThkg',
+    'key': GOOGLE_API_KEY,
     'zoom': '13',
     'scale': '2',
     'format': 'jpg',
