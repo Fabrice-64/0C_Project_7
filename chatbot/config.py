@@ -1,7 +1,7 @@
 import os
-
+import secure_keys
 
 class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+    SECRET_KEY = secure_keys.SECRET_KEY
 
-    GOOGLE_API_KEY = "AIzaSyAAhDYn9yKh3UUNb1Ztgwhd-Iw3H2VJ610"
+    GOOGLE_API_KEY = secure_keys.GOOGLE_API_KEY

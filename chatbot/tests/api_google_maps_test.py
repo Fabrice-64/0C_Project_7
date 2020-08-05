@@ -8,7 +8,7 @@ GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/staticmap'
 GOOGLE_PAYLOAD = {
     'center': 'Hôtel des Invalides',
     'size': '400x400',
-    'key': GOOGLE_API_KEY,
+    'key': Config.GOOGLE_API_KEY,
     'zoom': '13',
     'scale': '2',
     'format': 'jpg',
