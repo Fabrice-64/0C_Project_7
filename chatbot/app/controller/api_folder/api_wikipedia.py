@@ -1,19 +1,13 @@
 import requests
 import re
-from app.controller import config
+from app.controller.config import WikipediaPath as WP
 
 
 class WikipediaApi():
     def get_draft_location(self, location_search):
-        WIKI_DRAFT_LOCATION_PAYLOAD = {
-                                    'format': 'json',
-                                    'action': 'query',
-                                    'list': 'search',
-                                    'srsearch': 'TBD',
-                                    'srlimit': '1'}
-        payload = WIKI_DRAFT_LOCATION_PAYLOAD
+        payload = WP.WIKI_DRAFT_LOCATION_PAYLOAD
         payload['srsearch'] = location_search
-        response = requests.get(config.WIKI_ROOT, params=payload)
+        response = requests.get(WP.WIKI_ROOT, params=payload)
         if response.ok:
             return response.json()
         else:
@@ -27,15 +21,9 @@ class WikipediaApi():
             return None
 
     def get_location_summary(self, exact_location_name):
-        WIKI_GET_LOCATION_SUMMARY_PAYLOAD = {
-                                                'format': 'json',
-                                                'action': 'query',
-                                                'titles': 'TBD',
-                                                'prop': 'extracts',
-                                                'exintro': '1'}
-        payload = WIKI_GET_LOCATION_SUMMARY_PAYLOAD
+        payload = WP.WIKI_GET_LOCATION_SUMMARY_PAYLOAD
         payload['titles'] = exact_location_name
-        response = requests.get(config.WIKI_ROOT, params=payload)
+        response = requests.get(WP.WIKI_ROOT, params=payload)
         if response.ok:
             return response.json()
         else:
@@ -51,14 +39,9 @@ class WikipediaApi():
         return filtered_location_summary
 
     def get_coordinates(self, exact_location_name):
-        WIKI_GET_COORDINATES_PAYLOAD = {
-                                    'format': 'json',
-                                    'action': 'query',
-                                    'titles': 'TBD',
-                                    'prop': 'coordinates'}
-        payload = WIKI_GET_COORDINATES_PAYLOAD
+        payload = WP.WIKI_GET_COORDINATES_PAYLOAD
         payload['titles'] = exact_location_name
-        response = requests.get(config.WIKI_ROOT, params=payload)
+        response = requests.get(WP.WIKI_ROOT, params=payload)
         response = response.json()
         return response
 

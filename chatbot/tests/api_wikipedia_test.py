@@ -1,6 +1,7 @@
 import requests
 from app.controller import config
 from app.controller.api_folder.api_wikipedia import WikipediaApi
+from app.controller.config import WikipediaPath as WP
 from pytest import mark
 from tests.conftest import TestWikipediaRequest
 from nose.tools import assert_true, assert_equal
@@ -10,7 +11,7 @@ from unittest.mock import Mock, patch
 class TestApiWikipedia(WikipediaApi, TestWikipediaRequest):
 
     def test_connection_ok(self):
-        response = requests.get(config.WIKI_ROOT)
+        response = requests.get(WP.WIKI_ROOT)
         assert_true(response.ok)
 
     @patch('app.controller.api_folder.api_wikipedia.requests.get')
