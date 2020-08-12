@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+<body>
+   <h4>Ceci est l'emplacement du dialogue</h4>
+</body>
+
+
+<footer class="fixed-bottom">
+    <div class="pb-5">
 <h3>C'est ici que l'on pose la question</h3>
 <form action="/interface" method="POST">
     {{ question.hidden_tag() }}
     <p>
     {{ question.question(size=140) }}
     </p>
-    <hr>
 </form>
+</div>
+</footer>
 {% endblock %}

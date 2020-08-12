@@ -6,23 +6,31 @@
         <!--<link rel="stylesheet" href="./bootstrap/styles/bootstrap.min.css">-->
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Titre</title>
+        <title>ChatBot de Papounet</title>
     </head>
 
     <body>
+        <div class="container">
        <nav class="navbar">
            <a class="navbar-brand" href="#">
                <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" class="d-inline-block align-top" alt=picture">
                Bienvenue sur le ChatBot de Papounet !
            </a>
        </nav>
-            <h1>Hello, world!</h1>
+        </div>
             {% block content %}
             {% endblock %}
         
             <footer class="fixed-bottom">
+                <hr>
                 <div class="container">
-                Ceci est le pied de page
+                    <div class="row justify-content-between">
+                        <div class="col-4"> Fabrice Jaouën aka Papounet</div>
+                        <div class="col-4">
+                            <a href="https://github.com/Fabrice-64/OC_Project_7"> Lien vers GitHub</a>
+                        </div>
+            
+                    </div>
                 </div>
             </footer>
 
