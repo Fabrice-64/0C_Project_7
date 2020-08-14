@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block dialogue %}
+<div class="container">
+    <div class="row">
+       
+            <div class="col-6"><small>{{ question.question.data }}</small></div>
+      
+            <div class="col-6 offset-6"><small>{{ wikipedia_response }}</small></div>
+    </div>
+         
+        <img src="{{ google_map }}" class="rounded float-right" width="200" height="200">
+       
+</div>
+{% endblock %}
+
+{% block question %}
+<div id = "bottom">
+<footer class="fixed-bottom">
+    <div class="container">
+        <div class="pb-5">
+            <form action="/question" method="GET">
+                <div class="row">
+                <input class="col-8" type="text" id="question" name="question" maxlength="140" placeholder="Pose ta question ici !">
+                <button type="submit" class="btn btn-success" formmethod="POST">Validation</button>
+                {{ question.hidden_tag() }}
+                </div>
+            </form> 
+        </div>
+    </div>
+</footer>
+</div>
+{% endblock %}

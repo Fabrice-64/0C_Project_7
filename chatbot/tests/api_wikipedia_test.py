@@ -26,6 +26,10 @@ class TestApiWikipedia(WikipediaApi, TestWikipediaRequest):
             self.sort_out_exact_location_name(self.mock_draft_location)
         assert_equal(self.mock_location_name, real_location_name)
 
+    def test_push_exact_location_name(self):
+        exact_loc_name = self.push_exact_location_name(self.location_search)
+        assert_equal(self.mock_location_name, exact_loc_name)
+
     @patch('app.controller.api_folder.api_wikipedia.requests.get')
     def test_get_location_summary(self, mock_get):
         mock_get.return_value = Mock(ok=True)
@@ -52,19 +56,11 @@ class TestApiWikipedia(WikipediaApi, TestWikipediaRequest):
         response = self.filter_coordinates(self.mock_draft_coordinates)
         assert_equal(response, self.filtered_coordinates)
 
-    def test_from_question_to_summary(self):
-        summary = self.from_question_to_summary(self.location_search)
+    def test_from_location_to_summary(self):
+        summary = self.from_location_to_summary(self.mock_location_name)
         assert all(map(lambda w: w in summary, self.check_important_words))
 
-    def test_from_question_to_coordinates(self):
-        coordinates = self.from_question_to_coordinates(self.mock_location_name)
-        assert self.filtered_coordinates == coordinates
-
-    def test_from_question_to_coordinates_not_ok(self):
-        coordinates = self.from_question_to_coordinates(self.article_without_coordinates)
-        assert coordinates == None
-
-    def test_from_question_to_summary_not_ok(self):
-        summary = self.from_question_to_summary(self.non_existant_article)
-        assert summary == None
+    def test_from_location_to_summary_not_ok(self):
+        summary = self.from_location_to_summary(self.non_existant_article)
+        assert summary == self.non_existant_article
 

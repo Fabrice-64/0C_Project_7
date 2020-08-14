@@ -18,16 +18,21 @@ class WikipediaApi():
             exact_location_name = draft_location['query']['search'][0]['title']
             return exact_location_name
         except:
-            return None
+            return "None"
+    
+    def push_exact_location_name(self, location_search):
+        location = self.get_draft_location(location_search)
+        exact_location_name = self.sort_out_exact_location_name(location)
+        return exact_location_name
 
-    def get_location_summary(self, exact_location_name):
+    def get_location_summary(self, full_location_summary):
         payload = WP.WIKI_GET_LOCATION_SUMMARY_PAYLOAD
-        payload['titles'] = exact_location_name
+        payload['titles'] = full_location_summary
         response = requests.get(WP.WIKI_ROOT, params=payload)
         if response.ok:
             return response.json()
         else:
-            return None
+            return "None"
 
     def extract_location_summary(self, draft_location_summary):
         key = list(draft_location_summary.get('query').get('pages').keys())
@@ -51,20 +56,13 @@ class WikipediaApi():
             filtered_coordinates = draft_coordinates.get('query').get('pages').get(key[0]).get('coordinates')[0]
             return filtered_coordinates
         except TypeError:
-            return None
+            return "None"
 
-    def from_question_to_summary(self, question):
-        response = self.get_draft_location(question)
-        response = self.sort_out_exact_location_name(response)
-        if response is not None:
-            response = self.get_location_summary(response)
+    def from_location_to_summary(self, location):
+        if location != "None":
+            response = self.get_location_summary(location)
             response = self.extract_location_summary(response)
             response = self.filter_location_summary(response)
             return response
         else:
-            return None
-
-    def from_question_to_coordinates(self, question):
-        response = self.get_coordinates(question)
-        response = self.filter_coordinates(response)
-        return response
+            return "None"
