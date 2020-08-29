@@ -20,9 +20,10 @@
             var request = $("#question").val();
             $("#dialogue_box").append('<div class="row align-items-start"><row_box class=col-4>' + request + '</row_box>\
               <row_box class=col-4>' + data.wikipedia_response +'</row_box><row_box class=col-4><img src='+ data.google_map +'width="100px" height="100px"></row_box>');
-            $('#dialogue_box').animate({scrollTop: $('#dialogue_box').prop("scrollHeight")}, 500);
-          });
+            var element = document.getElementById("dialogue_box");
+            element.scrollIntoView({block:"end"});
       });
+        });
     });
     
 
@@ -104,15 +105,16 @@
     <navbar class="navbar">
       <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" alt=picture">
       Bienvenue sur le ChatBot de Papounet !
-      </navbar>
-        <dialogue_box>
-          <ul id="dialogue_box"></ul>
-        </dialogue_box>
+    </navbar>
+
+    <dialogue_box>
+      <ul id="dialogue_box"></ul>
+    </dialogue_box>
       
 
     <question_field class="container">
         <div class="row">
-            <input class="col-8" name=question id=question size=60% maxlength="140" placeholder="C'est ici que tu peux poser ta question !" autofocus;>
+            <input class="col-8" name=question id=question size=60% maxlength="140" placeholder="C'est ici que tu peux poser ta question !" autofocus>
         
             <div class="col-4">
             <a href=# id=validate class="btn btn-success btn-block">Validation</a>
