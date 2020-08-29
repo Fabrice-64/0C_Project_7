@@ -163,3 +163,5 @@ class TestWikipediaRequest():
     article_without_coordinates = "Napoléon Ier"
 
     non_existant_article = "None"
+
+    
