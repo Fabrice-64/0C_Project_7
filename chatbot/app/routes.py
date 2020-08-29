@@ -13,6 +13,7 @@ def process_question():
     question = request.args.get('question', "None", type=str)
     processed_question = QuestionProcessing()
     processed_question = processed_question.question_processing(question)
+    print(processed_question[1])
     return jsonify(result=processed_question[0],
                    wikipedia_response=processed_question[1],
                    google_map=processed_question[2])

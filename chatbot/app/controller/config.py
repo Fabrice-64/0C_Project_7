@@ -38,7 +38,7 @@ class GooglePath():
     GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/staticmap'
     GOOGLE_PAYLOAD = {
             'center': 'TBD',
-            'size': '400x400',
+            'size': '300x300',
             'key': Config.GOOGLE_API_KEY,
             'zoom': '13',
             'scale': '2',

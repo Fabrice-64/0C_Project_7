@@ -4,6 +4,10 @@ from app.controller.config import GooglePath as GP
 
 class GoogleApi:
 
+    def response_google(self):
+        pass
+    
+
     def get_map(self, exact_location):
         GP.GOOGLE_PAYLOAD['center'] = exact_location
         markers = 'size:mid|color:red|' + exact_location
