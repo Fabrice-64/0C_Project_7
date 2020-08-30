@@ -13,3 +13,10 @@ You may find some issues on your own computer and may have to set a specific pat
 Here is a link that could be useful, such a situation were to occur:
 https://www.pitt.edu/~naraehan/python3/faq.html#Q-nltk-data-path
 
+## Google API key:
+* The API Key is not available on GitHub
+* The user should get his own key
+* Then he creates a file named ***secure_keys.py*** in chatbot folder
+* Google Key should be named: ***GOOGLE_API_KEY***
+* The link to this confidential key is set in **app.controller.api_folder.config.py**
+
