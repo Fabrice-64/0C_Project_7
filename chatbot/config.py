@@ -1,5 +1,5 @@
-import os
 import secure_keys
+
 
 class Config(object):
     SECRET_KEY = secure_keys.SECRET_KEY

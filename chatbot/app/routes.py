@@ -16,4 +16,3 @@ def process_question():
     return jsonify(question=processed_question[0],
                    wikipedia_response=processed_question[1],
                    google_map=processed_question[2])
-

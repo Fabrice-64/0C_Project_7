@@ -19,7 +19,7 @@ class WikipediaApi():
             return exact_location_name
         except:
             return "None"
-    
+
     def push_exact_location_name(self, location_search):
         location = self._get_draft_location(location_search)
         exact_location_name = self._sort_out_exact_location_name(location)
@@ -36,11 +36,14 @@ class WikipediaApi():
 
     def _extract_location_summary(self, draft_location_summary):
         key = list(draft_location_summary.get('query').get('pages').keys())
-        response = draft_location_summary.get('query').get('pages').get(key[0]).get('extract')
+        response = draft_location_summary.get('query').get(
+            'pages').get(key[0]).get('extract')
         return response
 
-    def _filter_location_summary(self, non_filtered_location_summary):
-        filtered_location_summary = re.sub('<.*?>', "", non_filtered_location_summary)
+    def _filter_location_summary(self,
+                                 non_filtered_location_summary):
+        filtered_location_summary = re.sub(
+            '<.*?>', "", non_filtered_location_summary)
         return filtered_location_summary
 
     def _get_coordinates(self, exact_location_name):
@@ -53,7 +56,8 @@ class WikipediaApi():
     def _filter_coordinates(self, draft_coordinates):
         try:
             key = list(draft_coordinates.get('query').get('pages').keys())
-            filtered_coordinates = draft_coordinates.get('query').get('pages').get(key[0]).get('coordinates')[0]
+            filtered_coordinates = draft_coordinates.get('query').get(
+                'pages').get(key[0]).get('coordinates')[0]
             return filtered_coordinates
         except TypeError:
             return "None"

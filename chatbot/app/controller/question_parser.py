@@ -1,5 +1,4 @@
 
-import re
 from nltk.tag import StanfordPOSTagger
 from nltk import word_tokenize, wordpunct_tokenize
 from resources import stop_words
@@ -10,7 +9,7 @@ jar = Path.PATH_TO_JAR
 model = Path.PATH_TO_MODEL
 
 
-class QuestionParser():
+class QuestionParser:
 
     def _remove_stop_words(self, original_question):
         tokens = wordpunct_tokenize(original_question)

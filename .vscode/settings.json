@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "chatbot/venv/bin/python3"
+    "python.pythonPath": "chatbot/venv/bin/python3",
+    "python.linting.enabled": true
 }

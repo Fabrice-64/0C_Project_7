@@ -16,32 +16,32 @@ class WikipediaPath():
 
     WIKI_ROOT = 'https://fr.wikipedia.org/w/api.php'
     WIKI_DRAFT_LOCATION_PAYLOAD = {
-                                    'format': 'json',
-                                    'action': 'query',
-                                    'list': 'search',
-                                    'srsearch': 'TBD',
-                                    'srlimit': '1'}
+        'format': 'json',
+        'action': 'query',
+        'list': 'search',
+        'srsearch': 'TBD',
+        'srlimit': '1'}
     WIKI_GET_LOCATION_SUMMARY_PAYLOAD = {
-                                    'format': 'json',
-                                    'action': 'query',
-                                    'titles': 'TBD',
-                                    'prop': 'extracts',
-                                    'exintro': '1'}
+        'format': 'json',
+        'action': 'query',
+        'titles': 'TBD',
+        'prop': 'extracts',
+        'exintro': '1'}
     WIKI_GET_COORDINATES_PAYLOAD = {
-                                    'format': 'json',
-                                    'action': 'query',
-                                    'titles': 'TBD',
-                                    'prop': 'coordinates'}
+        'format': 'json',
+        'action': 'query',
+        'titles': 'TBD',
+        'prop': 'coordinates'}
 
 
 class GooglePath():
     GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/staticmap'
     GOOGLE_PAYLOAD = {
-            'center': 'TBD',
-            'size': '600x600',
-            'key': Config.GOOGLE_API_KEY,
-            'zoom': '12',
-            'scale': '2',
-            'format': 'jpg',
-            'language': 'fr',
-            'markers': 'size:mid|color:red|'}
+        'center': 'TBD',
+        'size': '600x600',
+        'key': Config.GOOGLE_API_KEY,
+        'zoom': '12',
+        'scale': '2',
+        'format': 'jpg',
+        'language': 'fr',
+        'markers': 'size:mid|color:red|'}
