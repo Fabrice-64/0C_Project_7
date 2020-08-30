@@ -16,3 +16,4 @@ tests/__init__.py
 tests/api_wikipedia_test.py
 tests/conftest.py
 tests/parser_test.py
+tests/api_google_test.py
