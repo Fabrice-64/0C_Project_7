@@ -1,8 +1,10 @@
 $(function() {
     $("#validate").bind('click', function(){
+      $('html').css('cursor', 'wait');
       $.getJSON($SCRIPT_ROOT + '/process_question', {
       question: $('input[name="question"]').val()
-      }, function(data){
+      }, 
+      function(data){
         if (data.wikipedia_response == "None"){
           $("#dialogue_box").append('<div class="row align-items-start mb-3"><row_box class=col-4>Je n\'ai pas compris ta question... Peux-tu la reformuler ?</row_box>');
         } else {
@@ -12,8 +14,8 @@ $(function() {
         };
         var element = document.getElementById("dialogue_box");
         element.scrollIntoView({block:"end"});
+        $('html').css('cursor', 'default');
         });
-        
         var clear_question = document.getElementById("question");
         clear_question.value = "";
     });
