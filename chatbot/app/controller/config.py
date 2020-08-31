@@ -1,3 +1,19 @@
+"""
+   This module manages all the parameters needed for the APIS
+   
+    Classes:
+    Path: used for the tokenization of the question string. Needed for the parsing
+
+    WikipediaPath: needed for the API
+
+    GooglePath: needed for the API. To be noticed: this is were the parameters of the downloaded map can be changed.
+
+    Exceptions:
+    NIL
+
+    Functions:
+    NIL
+    """
 from config import Config
 
 # Use with nltk to call the stanford project language analysis

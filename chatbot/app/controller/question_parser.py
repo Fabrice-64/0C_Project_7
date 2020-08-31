@@ -1,10 +1,22 @@
+"""
+   This module parses the question in successive steps.
+   
+    Classes:
+    QuestionParser: regroups all the methods involved in the parsing process.
+
+    Exceptions:
+    NIL
+
+    Functions:
+    NIL
+    """
 
 from nltk.tag import StanfordPOSTagger
 from nltk import word_tokenize, wordpunct_tokenize
 from resources import stop_words
 from app.controller.config import Path
 
-
+# this two constants are needed to use the StanfordPOSTagger functionality
 jar = Path.PATH_TO_JAR
 model = Path.PATH_TO_MODEL
 

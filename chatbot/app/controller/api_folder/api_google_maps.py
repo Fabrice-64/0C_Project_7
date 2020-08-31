@@ -39,7 +39,7 @@ class GoogleApi:
 
     def get_map(self, exact_location):
         """
-            Public method as used in other modules
+            Public method as used in other modules.
             """
         response = self._response_google(exact_location)
         return response.url
