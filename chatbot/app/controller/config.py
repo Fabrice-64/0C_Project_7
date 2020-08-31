@@ -1,12 +1,15 @@
 """
    This module manages all the parameters needed for the APIS
-   
+
     Classes:
-    Path: used for the tokenization of the question string. Needed for the parsing
+    Path: used for the tokenization of the question string.
+    Needed for the parsing
 
     WikipediaPath: needed for the API
 
-    GooglePath: needed for the API. To be noticed: this is were the parameters of the downloaded map can be changed.
+    GooglePath: needed for the API.
+    To be noticed: this is were the parameters
+    of the downloaded map can be changed.
 
     Exceptions:
     NIL
@@ -15,8 +18,6 @@
     NIL
     """
 from config import Config
-
-# Use with nltk to call the stanford project language analysis
 
 
 class Path():
@@ -29,7 +30,7 @@ class Path():
 
 
 class WikipediaPath():
-
+    # The values with TBD mean that they are filled during the API process
     WIKI_ROOT = 'https://fr.wikipedia.org/w/api.php'
     WIKI_DRAFT_LOCATION_PAYLOAD = {
         'format': 'json',
@@ -53,11 +54,16 @@ class WikipediaPath():
 class GooglePath():
     GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/staticmap'
     GOOGLE_PAYLOAD = {
+        # Center the map on the name of the wikipedia article
         'center': 'TBD',
+        # Size is in pixels
         'size': '600x600',
+        # Confidential key for the API: stored apart
         'key': Config.GOOGLE_API_KEY,
+        # For the zoom: the higher the figure is, the smaller the scale is.
         'zoom': '12',
         'scale': '2',
         'format': 'jpg',
         'language': 'fr',
+        # Highlights the location at the center of the map.
         'markers': 'size:mid|color:red|'}

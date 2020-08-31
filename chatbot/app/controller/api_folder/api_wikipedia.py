@@ -18,9 +18,11 @@ from app.controller.config import WikipediaPath as WP
 
 class WikipediaApi():
     """
-        Gets the summary of a Wikipedia article. Sends first the rough name extracted from the question parsing, then 
-        gets the exact name of the article and downloads the summary.
-        Methods extracting the coordinates available in the article are extracted but not used.
+        Gets the summary of a Wikipedia article.
+        Sends first the rough name extracted from the question parsing,
+        then gets the exact name of the article and downloads the summary.
+        Methods extracting the coordinates available
+        in the article are operational but not used.
 
         Methods:
 
@@ -28,7 +30,8 @@ class WikipediaApi():
         sends to WIkipedia the rough data
 
         _sort_out_exact_location_name:
-        exploit the response to find the exact name of the article. In case of several responses, take the first one.
+        exploit the response to find the exact name of the article.
+        In case of several responses, take the first one.
 
         _push_exact_location_name:
         sends it to the route to be used by Google.
@@ -103,7 +106,8 @@ class WikipediaApi():
             full_location_name: string with the title of the wikipedia article
 
             Returns:
-            response: location summary in JSON format. Corresponds to a wikipedia article.
+            response: location summary in JSON format.
+            Corresponds to a wikipedia article.
             """
         payload = WP.WIKI_GET_LOCATION_SUMMARY_PAYLOAD
         payload['titles'] = full_location_name

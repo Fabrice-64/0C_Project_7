@@ -1,3 +1,14 @@
+"""
+    This module tests the parser, as revealed by its name.
+    The first tests are unitary tests, the last one is functional
+    as it test all the methods leading to a parsed sentence.
+
+    Exceptions:
+    NIL
+
+    Functions.
+    NIL
+    """
 from app.controller.config import Path
 import pytest
 from pytest import mark

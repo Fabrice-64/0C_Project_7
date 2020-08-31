@@ -1,3 +1,5 @@
+/* This script unfolds the whole dialogue process once the user has validated his question.
+It goes from sending the question to the routes module, down to displaying the replies. */
 $(function() {
     $("#validate").bind('click', function(){
       $('html').css('cursor', 'wait');

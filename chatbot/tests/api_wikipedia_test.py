@@ -1,3 +1,18 @@
+"""
+   This module manages the tests with the wikipedia API.
+   It starts with the unitary test, to end with a functional
+   test of the whole exchange between the app and the website.
+   These tests use mock data iot limit the connection to Wikipedia.
+
+    Classes:
+    TestApiWikipedia: regroups all the methods involved in the API.
+
+    Exceptions:
+    NIL
+
+    Functions:
+    NIL
+    """
 import requests
 from app.controller.api_folder.api_wikipedia import WikipediaApi
 from app.controller.config import WikipediaPath as WP
@@ -7,6 +22,36 @@ from unittest.mock import Mock, patch
 
 
 class TestApiWikipedia(WikipediaApi, TestWikipediaRequest):
+    """
+        Inherits from the Wikipedia API class, where all the API is played
+        and from TestWikipediaRequest which ecompasses all the test data.
+
+        Methods:
+        test_connection_ok
+
+        test_get_draft_location_when_response_is_ok
+
+        test_sort_out_exact_location_name
+
+        test_get_location_summary
+
+        test_extract_location_summary
+
+        test_filter_location_summary
+
+        test_get_coordinates:
+        not used in this current version. However remains tested.
+
+        test_filter_coordinates:
+        idem
+
+        test_from_location_to_summary:
+        functional test
+
+        test_from_location_to_summary_not_ok
+        checks that a wrong question or
+        the absence of response is properly handled with.
+        """
 
     def test_connection_ok(self):
         response = requests.get(WP.WIKI_ROOT)
