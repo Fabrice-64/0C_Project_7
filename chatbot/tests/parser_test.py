@@ -15,6 +15,7 @@ from pytest import mark
 from tests.conftest import TestParameters
 from app.controller.question_parser import QuestionParser
 
+# Are needed to test the tagging process.
 jar = Path.PATH_TO_JAR
 model = Path.PATH_TO_MODEL
 

@@ -1,7 +1,9 @@
-import secure_keys
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 class Config(object):
-    SECRET_KEY = secure_keys.SECRET_KEY
 
-    GOOGLE_API_KEY = secure_keys.GOOGLE_API_KEY
+    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
