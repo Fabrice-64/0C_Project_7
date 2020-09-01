@@ -21,9 +21,9 @@ from config import Config
 
 
 class Path():
-    ROOT = '/Users/fabricejaouen/DepotLocalGIT/OC_Project_7'
-    JAR = '/chatbot/resources/stanford-tagger-4.0.0/stanford-postagger.jar'
-    MODEL = '/chatbot/resources/stanford-tagger-4.0.0/models/french-ud.tagger'
+    ROOT = '../chatbot/'
+    JAR = 'resources/stanford-tagger-4.0.0/stanford-postagger.jar'
+    MODEL = 'resources/stanford-tagger-4.0.0/models/french-ud.tagger'
 
     PATH_TO_JAR = ROOT + JAR
     PATH_TO_MODEL = ROOT+MODEL
