@@ -1,4 +1,4 @@
-# OC_Project_7
+# Chatbot Project
 Project of a chat bot in the overall framework of the developer education program
 
 ## To run this program:
