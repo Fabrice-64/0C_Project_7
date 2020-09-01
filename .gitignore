@@ -1,7 +1,0 @@
-chatbot/venv
-__pycache__
-.pytest_cache
-secure_keys.py
-.vscode
-.pytest_cache
-.env

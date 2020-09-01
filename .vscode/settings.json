@@ -1,4 +1,3 @@
 {
-    "python.pythonPath": "chatbot/venv/bin/python3",
-    "python.linting.enabled": true
+    "python.pythonPath": "/Users/fabricejaouen/DepotLocalGIT/OC_Project_7/chatbot/venv/bin/python3"
 }
