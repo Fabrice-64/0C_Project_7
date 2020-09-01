@@ -21,9 +21,10 @@ from config import Config
 
 
 class Path():
-    ROOT = '../chatbot/'
+    ROOT = ''
     JAR = 'resources/stanford-tagger-4.0.0/stanford-postagger.jar'
     MODEL = 'resources/stanford-tagger-4.0.0/models/french-ud.tagger'
+
 
     PATH_TO_JAR = ROOT + JAR
     PATH_TO_MODEL = ROOT+MODEL
