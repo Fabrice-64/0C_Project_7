@@ -1,0 +1,26 @@
+row_question {
+  background-color:#FFFFF0;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: small;
+  border-left-style: groove;
+}
+
+row_answer {
+  display: inline-block;
+  background-color:#F8F8FF;
+  max-height: 300px;
+  border-color: none;
+  border-left-style:groove;
+  overflow-y: auto;
+  font-size: small;
+}
+
+row_picture {
+  display: inline-block;
+  max-height: 300px;
+  border-color: none;
+  border-left-style:groove;
+  overflow-y: auto;
+  font-size: small;
+}

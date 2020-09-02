@@ -21,10 +21,10 @@ from config import Config
 
 
 class Path():
-    ROOT = ''
+    ROOT = '/Users/fabricejaouen/DepotLocalGIT/chatbot/'
     JAR = 'resources/stanford-tagger-4.0.0/stanford-postagger.jar'
     MODEL = 'resources/stanford-tagger-4.0.0/models/french-ud.tagger'
-
+#/Users/fabricejaouen/DepotLocalGIT/chatbot/resources/stanford-tagger-4.0.0
 
     PATH_TO_JAR = ROOT + JAR
     PATH_TO_MODEL = ROOT+MODEL

@@ -5,98 +5,34 @@
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
     <script src="{{ url_for('static', filename='jquery-3.5.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--This CSS style has to remain here as put in a separate file it creates interferences
-    with the stylesheet and jams the whole page setup-->
-    <style>
-        body {
-        background-color: lightgray;
-        padding: 20px;
-        border-style: solid;
-        border-color: lightgray;
-        min-width: fit-content;
-        min-height: 700px;
-      }
-      dialogue_box{
-        display: flex;
-        background-color: lightgray;
-        width: 90%;
-        height: 70vh;
-        border-left: 5%;
-        overflow-y: auto;
-        flex-direction:column;
-      }
-      row_box{
-        display: inline-block;
-        background-color:lightgrey;
-        max-height: 300px;
-        border-color: none;
-        border-left-style:groove;
-        overflow-y: auto;
-        font-size: small;
-      }
-      navbar {
-        display: inline-block;
-        background-color: grey;
-        height:8%;
-        width: 90%;
-        font-size: 3vw;
-        padding: 2%;
-
-      }
-      question_field {
-        display: inline-block;
-        background-color: lightgrey;
-        height: 60px;
-        width: 90%;
-        font-size: small;
-        margin-top: auto;
-      }
-      
-      footer{
-        display: inline-block;
-        background-color: grey;
-        height: 30px;
-        padding: 1%;
-        width: 90%;
-        font-size: 1vw;
-        bottom: 10px;
-        margin-left: 0;
-      }
-
-      img{
-        display: inline-flex;
-        vertical-align: middle;
-      }
-    </style>
-    <script type=text/javascript>
-      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-    </script>
     <script type="text/javascript" src="{{ url_for('static', filename='process_input.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/chatbot_style.css') }}">
   </head>
 
   <title>ChatBot de Papounet</title>
 
   <body>
-    <navbar class="navbar">
-      <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" alt=picture">
+    <navbar class="navbar w-75 m-4" style="background-color:  #F0FFFF;">
+      <a href="https://www.linkedin.com/in/fabrice-jaouen/" target="_blank">
+      <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" alt=picture"></a>
       Bienvenue sur le ChatBot de Papounet !
     </navbar>
-    <div class="alert alert-dismissible alert-warning w-75">
+    <div class="alert alert-dismissible alert-warning w-75 m-4">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h4 class="alert-heading">Petit Rappel!</h4>
-      <p class="mb-0">N'oublie pas qu'en Français, une question se termine toujours par un ?</p>
+      <p class="mb-0">N'oublie pas qu'en Français, une question se termine toujours par un Point d'interrogation</p>
     </div>
     
     {% block dialogue_flow %}
     {% endblock %}
     
-    <footer class="container">
-      <div class="row">
+    <div class="w-75 m-4">
+      <div class="row p-1">
         <p class=col-6>Fabrice Jaouën</p>
         <a class="col-6 text-right"  id="button" href="https://github.com/Fabrice-64/OC_Project_7"> Lien vers GitHub</a>
       </div>
-    </footer>
+    </div>
   </body>
 </html>
