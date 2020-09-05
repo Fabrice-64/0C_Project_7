@@ -11,14 +11,15 @@
     NIL
     """
 
+from resources import stop_words
+from config import StanfordPath, NLTKData
 from nltk.tag import StanfordPOSTagger
 from nltk import word_tokenize, wordpunct_tokenize
-from resources import stop_words
-from app.controller.config import Path
+
 
 # this two constants are needed to use the StanfordPOSTagger functionality
-jar = Path.PATH_TO_JAR
-model = Path.PATH_TO_MODEL
+path = StanfordPath()
+jar, model = path.get_path_stanford_tagger()
 
 
 class QuestionParser:

@@ -11,7 +11,7 @@
     NIL
     """
 import requests
-from app.controller.config import GooglePath as GP
+from config import GooglePath as GP
 
 
 class GoogleApi:

@@ -15,7 +15,7 @@
     """
 import requests
 from app.controller.api_folder.api_wikipedia import WikipediaApi
-from app.controller.config import WikipediaPath as WP
+from config import WikipediaPath as WP
 from tests.conftest import TestWikipediaRequest
 from nose.tools import assert_true, assert_equal
 from unittest.mock import Mock, patch

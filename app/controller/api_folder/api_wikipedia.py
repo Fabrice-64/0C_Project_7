@@ -13,7 +13,7 @@
 
 import requests
 import re
-from app.controller.config import WikipediaPath as WP
+from config import WikipediaPath as WP
 
 
 class WikipediaApi():
