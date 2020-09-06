@@ -102,11 +102,3 @@ class GooglePath:
         'language': 'fr',
         # Highlights the location at the center of the map.
         'markers': 'size:mid|color:red|'}
-
-"""
-nltk = NLTKData()
-nltk_data = nltk.get_path_nltk_data()
-
-
-os.environ['NLTK_DATA'] = nltk_data
-"""

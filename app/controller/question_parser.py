@@ -13,12 +13,6 @@
 
 from resources import stop_words
 from config import StanfordPath
-
-"""
-nltk = NLTKData()
-NLTK_DATA = nltk.get_path_nltk_data
-"""
-
 from nltk.tag import StanfordPOSTagger
 from nltk import word_tokenize, wordpunct_tokenize
 
