@@ -41,11 +41,11 @@ class NLTKData:
             self.ROOT = os.path.dirname(os.getcwd())
         else:
             self.ROOT = os.getcwd()
-
+"""
     def get_path_nltk_data(self):
         PATH_TO_NLTK_DATA = os.path.join(self.ROOT, self.NLTK_DATA)
         return PATH_TO_NLTK_DATA
-
+"""
 
 class StanfordPath:
     def __init__(self):
@@ -103,9 +103,10 @@ class GooglePath:
         # Highlights the location at the center of the map.
         'markers': 'size:mid|color:red|'}
 
-
+"""
 nltk = NLTKData()
 nltk_data = nltk.get_path_nltk_data()
 
 
 os.environ['NLTK_DATA'] = nltk_data
+"""
