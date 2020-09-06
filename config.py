@@ -32,21 +32,6 @@ class Config(object):
     ROOT = os.getcwd()
 
 
-class NLTKData:
-    def __init__(self):
-        self.NLTK_DATA = 'resources/nltk_data'
-        reg = re.compile(r'^(.*?(/tests))')
-        current_dir = os.getcwd()
-        if reg.match(current_dir):
-            self.ROOT = os.path.dirname(os.getcwd())
-        else:
-            self.ROOT = os.getcwd()
-"""
-    def get_path_nltk_data(self):
-        PATH_TO_NLTK_DATA = os.path.join(self.ROOT, self.NLTK_DATA)
-        return PATH_TO_NLTK_DATA
-"""
-
 class StanfordPath:
     def __init__(self):
         self.JAR = 'resources/stanford-tagger-4.0.0/stanford-postagger.jar'
