@@ -5,7 +5,7 @@ Project of a chat bot in the overall framework of the developer education progra
 * Create a virtual environment in the folder named ***chatbot***;
 * Install the required dependencies from file named ***requirements.txt***;
 * In the chatbot root folder, create a ***.env*** file to host your Google API key (see details below);
-* Type ***run flask***;
+* Type ***flask run***;
 * Open your browser at url ***http://localhost:5000/#***.
 
 ## To be noticed:
