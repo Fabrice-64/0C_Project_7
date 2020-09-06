@@ -2,8 +2,11 @@
    This module manages all the parameters needed for the APIS
 
     Classes:
-    Path: used for the tokenization of the question string.
-    Needed for the parsing
+
+    Config: contains some environment variables, mainly used for local.
+
+    StanfordPath: StanfordPOSTagger performs the syntaxtic analysis of the question.
+    The path to the files performing this task is defined here.
 
     WikipediaPath: needed for the API
 
