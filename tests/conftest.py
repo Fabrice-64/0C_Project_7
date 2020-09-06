@@ -40,32 +40,42 @@ class TestParameters():
         ('chateau Versailles')
         ]
 
+    question5 = ["Salut tu vas bien han ?",
+                    "han ?",
+                [('han', 'PROPN'), ("?", "PUNCT")],
+                ('han')]
+
     questions_tokenize = [
         (question1[0], question1[1]),
         (question2[0], question2[1]),
         (question3[0], question3[1]),
-        (question4[0], question4[1])
+        (question4[0], question4[1]),
+        (question5[0], question5[1])
         ]
 
     tag_tokens = [
         (question1[1], question1[2]),
         (question2[1], question2[2]),
         (question3[1], question3[2]),
-        (question4[1], question4[2])
+        (question4[1], question4[2]),
+        (question5[1], question5[2])
         ]
 
     filtered_words = [
         (question1[2], question1[3]),
         (question2[2], question2[3]),
         (question3[2], question3[3]),
-        (question4[2], question4[3])
+        (question4[2], question4[3]),
+        (question5[2], question5[3])
         ]
 
     parsing_process = [
         (question1[0], question1[3]),
         (question2[0], question2[3]),
         (question3[0], question3[3]),
-        (question4[0], question4[3])
+        (question4[0], question4[3]),
+        (question5[0], question5[3])
+
         ]
 
 

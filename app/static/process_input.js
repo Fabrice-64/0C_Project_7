@@ -12,6 +12,9 @@ $(function() {
         if (data.wikipedia_response == "None"){
           $("#dialogue_box").append('<div class="row mb-2">\
           <row_answer class="col-4 offset-4">Je n\'ai pas compris ta question... Peux-tu la reformuler ?</row_answer></div>');
+        } else if  (data.wikipedia_response == ""){
+          $("#dialogue_box").append('<div class="row mb-2">\
+          <row_answer class="col-4 offset-4">Je n\'ai rien trouvé qui réponde à ta question... :-/ Tu peux en poser une autre, please ?</row_answer></div>');
         } else {
           $("#dialogue_box").append('<div class="row align-items-start mb-4">\
           <row_answer class="col-6 offset-4">' + data.wikipedia_response +'</row_answer>\
