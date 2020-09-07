@@ -30,16 +30,20 @@ class GoogleApi:
         extracts the url from the response to the API request.
         """
 
-    def _response_google(self, exact_location):
-        GP.GOOGLE_PAYLOAD['center'] = exact_location
+    def _response_google_static(self, exact_location):
+        GP.GOOGLE_PAYLOAD_STATIC['center'] = exact_location
         markers = 'size:mid|color:red|' + exact_location
-        GP.GOOGLE_PAYLOAD['markers'] = markers
-        response = requests.get(GP.GOOGLE_ROOT, params=GP.GOOGLE_PAYLOAD)
+        GP.GOOGLE_PAYLOAD_STATIC['markers'] = markers
+        response = requests.get(GP.GOOGLE_ROOT_STATIC,
+                                params=GP.GOOGLE_PAYLOAD_STATIC)
         return response
 
-    def get_map(self, exact_location):
+    def get_map_static(self, exact_location):
         """
             Public method as used in other modules.
             """
-        response = self._response_google(exact_location)
+        response = self._response_google_static(exact_location)
         return response.url
+
+    def _response_google_dynamic(self, exact_location):
+        pass

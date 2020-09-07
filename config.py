@@ -75,8 +75,8 @@ class WikipediaPath:
 
 
 class GooglePath:
-    GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/staticmap'
-    GOOGLE_PAYLOAD = {
+    GOOGLE_ROOT_STATIC = 'https://maps.googleapis.com/maps/api/staticmap'
+    GOOGLE_PAYLOAD_STATIC = {
         # Center the map on the name of the wikipedia article
         'center': 'TBD',
         # Size is in pixels
