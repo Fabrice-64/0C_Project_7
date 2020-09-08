@@ -18,7 +18,7 @@ $(function() {
         } else {
           $("#dialogue_box").append('<div class="row align-items-start mb-4">\
           <row_answer class="col-6 offset-4">' + data.wikipedia_response +'</row_answer>\
-          <row_picture class=col-2><a href=' + data.google_map + ' target="_blank">\
+          <row_picture class=col-2><a href="/google_map" target="_blank">\
           <img src='+ data.google_map +' width="100px" height="100px"></a></row_picture>');
         };
         var element = document.getElementById("dialogue_box");

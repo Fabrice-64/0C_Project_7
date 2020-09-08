@@ -90,3 +90,11 @@ class GooglePath:
         'language': 'fr',
         # Highlights the location at the center of the map.
         'markers': 'size:mid|color:red|'}
+
+    GOOGLE_ROOT_DYNAMIC = 'https://www.google.com/maps/embed/v1/place?'
+    GOOGLE_PAYLOAD_DYNAMIC = {
+        'key': Config.GOOGLE_API_KEY,
+        'q': 'TBD',
+        'language': 'fr',
+        'zoom': '11'
+    }

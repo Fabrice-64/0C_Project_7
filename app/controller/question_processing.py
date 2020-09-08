@@ -45,3 +45,15 @@ class QuestionProcessing:
             exact_location)
         google_map = google_map.get_map_static(exact_location)
         return (question, wikipedia_response, google_map)
+
+    def dynamic_map_processing(self):
+        """
+            Arguments:
+            NIL
+
+            Returns:
+            The url of a dynamic map
+            """
+        google_dynamic = GoogleApi()
+        url_google_dynamic = google_dynamic.get_map_dynamic()
+        return url_google_dynamic

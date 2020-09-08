@@ -39,3 +39,14 @@ def process_question():
     return jsonify(question=processed_question[0],
                    wikipedia_response=processed_question[1],
                    google_map=processed_question[2])
+
+
+@app.route('/google_map')
+def google_map():
+    """
+        Display a Google dynamic map
+        """
+    map = QuestionProcessing()
+    url_google_dynamic = map.dynamic_map_processing()
+    return render_template('google_map.html',
+                           url_google_dynamic=url_google_dynamic)

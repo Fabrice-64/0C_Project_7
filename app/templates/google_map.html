@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Carte avec Zoom</title>
+{% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/google_map_style.css') }}">
+
+<div class="jumbotron w-75 m-4" style="height: 60vh; overflow-y: auto; background-color: #F0FFFF;">
+    <iframe
+    src= {{url_google_dynamic}} allowfullscreen>
+    </iframe>
+</div>
+
+{% endblock %}

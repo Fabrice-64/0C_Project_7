@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
-{% block dialogue_flow %}
+{% block title %}
+<title>ChatBot de Papounet</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="alert alert-dismissible alert-warning w-75 m-4">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4 class="alert-heading">Petit Rappel!</h4>
+  <p class="mb-0">N'oublie pas qu'en Français, une question se termine toujours par un Point d'interrogation</p>
+</div>
 
 <div class="jumbotron w-75 m-4" style="height: 60vh; overflow-y: auto; background-color: #F0FFFF;">
   <ul id="dialogue_box">

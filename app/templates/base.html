@@ -10,22 +10,17 @@
     <script type="text/javascript" src="{{ url_for('static', filename='process_input.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/chatbot_style.css') }}">
   </head>
-
-  <title>ChatBot de Papounet</title>
-
+  {% block title %}
+  {% endblock %}
   <body>
     <navbar class="navbar w-75 m-4" style="background-color:  #F0FFFF;">
       <a href="https://www.linkedin.com/in/fabrice-jaouen/" target="_blank">
       <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" alt=picture"></a>
       Bienvenue sur le ChatBot de Papounet !
     </navbar>
-    <div class="alert alert-dismissible alert-warning w-75 m-4">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <h4 class="alert-heading">Petit Rappel!</h4>
-      <p class="mb-0">N'oublie pas qu'en Français, une question se termine toujours par un Point d'interrogation</p>
-    </div>
+   
     
-    {% block dialogue_flow %}
+    {% block content %}
     {% endblock %}
     
     <div class="w-75 m-4">
