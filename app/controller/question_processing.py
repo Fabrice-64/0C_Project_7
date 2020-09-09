@@ -43,17 +43,6 @@ class QuestionProcessing:
             parsed_question.push_exact_location_name(request_to_send)
         wikipedia_response = parsed_question.from_location_to_summary(
             exact_location)
-        google_map = google_map.get_map_static(exact_location)
-        return (question, wikipedia_response, google_map)
+        url_google_dynamic = google_map.get_map_dynamic(exact_location)
+        return (question, wikipedia_response, url_google_dynamic)
 
-    def dynamic_map_processing(self):
-        """
-            Arguments:
-            NIL
-
-            Returns:
-            The url of a dynamic map
-            """
-        google_dynamic = GoogleApi()
-        url_google_dynamic = google_dynamic.get_map_dynamic()
-        return url_google_dynamic

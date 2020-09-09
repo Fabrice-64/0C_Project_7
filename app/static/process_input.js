@@ -17,9 +17,8 @@ $(function() {
           <row_answer class="col-4 offset-4">Je n\'ai rien trouvé qui réponde à ta question... :-/ Tu peux en poser une autre, please ?</row_answer></div>');
         } else {
           $("#dialogue_box").append('<div class="row align-items-start mb-4">\
-          <row_answer class="col-6 offset-4">' + data.wikipedia_response +'</row_answer>\
-          <row_picture class=col-2><a href="/google_map" target="_blank">\
-          <img src='+ data.google_map +' width="100px" height="100px"></a></row_picture>');
+          <row_answer class="col-8 offset-4">' + data.wikipedia_response +'</row_answer>');
+          $("#dialogue_box").append('<row_picture class="col-8 offset-4"><iframe src=' + data.url_google_dynamic +' allowfullscreen></iframe></row_picture');
         };
         var element = document.getElementById("dialogue_box");
         element.scrollIntoView({block:"end"});

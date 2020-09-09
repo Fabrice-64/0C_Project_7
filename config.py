@@ -75,21 +75,6 @@ class WikipediaPath:
 
 
 class GooglePath:
-    GOOGLE_ROOT_STATIC = 'https://maps.googleapis.com/maps/api/staticmap'
-    GOOGLE_PAYLOAD_STATIC = {
-        # Center the map on the name of the wikipedia article
-        'center': 'TBD',
-        # Size is in pixels
-        'size': '600x600',
-        # Confidential key for the API: stored apart
-        'key': Config.GOOGLE_API_KEY,
-        # For the zoom: the higher the figure is, the smaller the scale is.
-        'zoom': '12',
-        'scale': '2',
-        'format': 'jpg',
-        'language': 'fr',
-        # Highlights the location at the center of the map.
-        'markers': 'size:mid|color:red|'}
 
     GOOGLE_ROOT_DYNAMIC = 'https://www.google.com/maps/embed/v1/place?'
     GOOGLE_PAYLOAD_DYNAMIC = {

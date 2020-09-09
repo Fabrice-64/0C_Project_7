@@ -26,5 +26,5 @@ class TestGoogleApi(GoogleApi, TestWikipediaRequest):
         assert response.status_code == 200
 
     def test_connection_dynamic_ok(self):
-        response = self._response_google_dynamic(self.mock_location_name)
-        assert response.status_code == 200
+        response = self._create_url_google_dynamic(self.mock_location_name)
+        assert response == 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAAhDYn9yKh3UUNb1Ztgwhd-Iw3H2VJ610&q=H%C3%B4tel+des+Invalides&language=fr&zoom=11'
