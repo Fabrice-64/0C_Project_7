@@ -81,5 +81,6 @@ class GooglePath:
         'key': Config.GOOGLE_API_KEY,
         'q': 'TBD',
         'language': 'fr',
-        'zoom': '11'
+        'zoom': '11',
+        'region': 'fr'
     }
