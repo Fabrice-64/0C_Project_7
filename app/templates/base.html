@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <script>
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
@@ -15,11 +15,13 @@
   </head>
  
   <body>
-    <navbar class="navbar w-75 m-4" style="background-color:  #F0FFFF;">
-      <a href="https://www.linkedin.com/in/fabrice-jaouen/" target="_blank">
-      <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" alt=picture"></a>
-      Bienvenue sur le ChatBot de Papounet !
-    </navbar>
+    <nav>
+      <navbar class="navbar w-75 m-4" style="background-color:  #F0FFFF;">
+        <a href="https://www.linkedin.com/in/fabrice-jaouen/" target="_blank">
+        <img src="{{ url_for('static', filename='face_co.png') }}" width="30" height="30" alt="picture"></a>
+        Bienvenue sur le ChatBot de Papounet !
+      </navbar>
+    </nav>
    
     
     {% block content %}
