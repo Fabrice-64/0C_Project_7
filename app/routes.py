@@ -28,7 +28,7 @@ def question():
     return render_template('question.html')
 
 
-@app.route('/process_question')
+@app.route('/process_question', methods=['GET', 'POST'])
 def process_question():
     """
         Manages the whole process from the client to the server and back.
@@ -36,6 +36,5 @@ def process_question():
     question = request.args.get('question', "None", type=str)
     processed_question = QuestionProcessing()
     processed_question = processed_question.question_processing(question)
-    return jsonify(question=processed_question[0],
-                   wikipedia_response=processed_question[1],
-                   url_google_dynamic=processed_question[2])
+    return jsonify(wikipedia_response=processed_question[0],
+                   url_google_dynamic=processed_question[1])

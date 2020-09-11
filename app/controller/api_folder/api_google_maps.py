@@ -1,6 +1,6 @@
 """
    This module gets a static map from Google.
-   
+
     Classes:
     GoogleApi
 
@@ -10,7 +10,7 @@
     Functions:
     NIL
     """
-import requests
+
 from urllib.parse import urlencode
 from config import GooglePath as GP
 
@@ -31,10 +31,10 @@ class GoogleApi:
         extracts the url from the response to the API request.
         """
 
-
     def _create_url_google_dynamic(self, exact_location):
         """
-            At Google, the root for embedded maps is different from static maps.
+            At Google,
+            the root for embedded maps is different from static maps.
             """
         GP.GOOGLE_PAYLOAD_DYNAMIC['q'] = exact_location
         parameters = urlencode(GP.GOOGLE_PAYLOAD_DYNAMIC)

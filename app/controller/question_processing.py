@@ -31,7 +31,7 @@ class QuestionProcessing:
             question: as asked by the user.
 
             Returns:
-            (question, wikipedia_response, google_map):
+            (wikipedia_response, google_map):
             a tuple containing all the items needed to operate
             the chatbot.
             """
@@ -44,5 +44,5 @@ class QuestionProcessing:
         wikipedia_response = parsed_question.from_location_to_summary(
             exact_location)
         url_google_dynamic = google_map.get_map_dynamic(exact_location)
-        return (question, wikipedia_response, url_google_dynamic)
+        return (wikipedia_response, url_google_dynamic)
 
