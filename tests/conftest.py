@@ -177,7 +177,7 @@ class TestWikipediaRequest():
 
 class TestGoogleApiParams(GooglePath):
     location = "hôtel des Invalides"
-    google_response = GooglePath.GOOGLE_ROOT_DYNAMIC + 'key=' + Config.GOOGLE_API_KEY + '&q=h%C3%B4tel+des+Invalides&language=fr&zoom=11'
+    google_response = GooglePath.GOOGLE_ROOT_DYNAMIC + 'key=' + Config.GOOGLE_API_KEY + '&q=h%C3%B4tel+des+Invalides&language=fr&zoom=11&region=fr'
     test_google_params = [(location, google_response)]
 
 
